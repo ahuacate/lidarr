@@ -27,11 +27,11 @@ Tasks to be performed are:
 Browse to http://192.168.50.117:8686/ and login to Lidarr. Click the `Settings Tab` and set the state to show Advanced Settings. Configure all your tabs as follows.
 
 ### 2.01 Configure Media Management
-![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/media_management.png)
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/management.png)
 
 ### 2.02 Configure Profiles
 Edit Delay Profiles. Add 300 minutes to the torrent delay.
-![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/profiles.png)
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/quality.png)
 
 ### 2.03 Configure Indexers
 This is where you configure Lidarr to use Usenet a your primary search indexer and Torrents as secondary. For torrents Lidarr uses Jackett which must be installed as shown [HERE](https://github.com/ahuacate/jackett).
