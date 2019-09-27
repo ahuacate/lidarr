@@ -118,9 +118,9 @@ Other `download tab` settings must be set as follows:
 ### 2.05 Configure Import Lists
 If you want you can add Spotify or Last.fm to import your playlists. This example uses a personal Spotify playlist(s).
 
-| Sportify Playlists | Value | Notes
+| Spotify Playlists | Value | Notes
 | :---  | :---: | :---
-| Name | `SpotifyPlaylist` | *Best to use a Spotify account username so you can add multiple Spotify playlists to Lidarr (i.e Spotify Adolf, Spotify Eva or Spotify Kids)*
+| Name | `SpotifyPlaylist` | *Best to use your Spotify account username so you can add multiple Spotify playlists to Lidarr (i.e Spotify Adolf, Spotify Eva or Spotify Kids)*
 | Enable Automatic Add | `☑`
 | Monitor | `Specific Album`
 | Root Folder | `/mnt/music`
@@ -131,24 +131,26 @@ If you want you can add Spotify or Last.fm to import your playlists. This exampl
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/spotify.png)
 
-Create a new connection using the `Emby (Media Browser)` template and fill out the details as shown below.
-
 ### 2.06 Configure Connect
 Create a new connection using the `Emby (Media Browser)` template and fill out the details as shown below.
 
 | Add - Emby (Media Browser) | Value | Notes
 | :---  | :---: | :---
 | Name | `Jellyfin`
-| On Grab | `No`
-| On Download | `Yes`
-| On Upgrade | `Yes`
-| On Rename | `Yes`
-| Filter Movie Tags | leave blank
+| On Grab | `☐`
+| On Release Import | `☑`
+| On Upgrade | `☑`
+| On Download Failure | `☐`
+| On Import Failure | `☐`
+| On Rename | `☑`
+| On Track Retag | `☑`
+| On Health Issue | `☐`
+| Tags | leave blank
 | Host | `192.168.50.111` 
 | Port | `8096`
-| API Key | Insert your Jellyfin API key | *Note, create one in Jellyfin for Lidarr*
-| Send Notifications| `Yes`
-| Update Library | `Yes`
+| Use SSL | `☐`
+| API Key | Insert your Jellyfin API key |	*Note, create one in Jellyfin for Lidarr*
+| Update Library | `☑`
 
 And click `Test` to check it works. If successful, click `Save`.
 
@@ -174,7 +176,15 @@ And click `Save`.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/general.png)
 
-### 2.08 Configure UI
+### 2.08 Configure Metadata
+
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/metadata.png)
+
+### 2.09 Configure General
+
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/general.png)
+
+### 2.09 Configure UI
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/ui.png)
 
@@ -198,9 +208,9 @@ With the Proxmox web interface go to `typhoon-01` > `116 (lidarr)` > `>_ Shell` 
 ```
 sudo systemctl stop lidarr.service &&
 sleep 5 &&
-rm -r /home/media/.config/Lidarr/nzbdrone.db* &&
-unzip -o /mnt/backup/lidarr/lidarr_backup_base_settings.zip 'nzbdrone.db*' -d /home/media/.config/Lidarr &&
-chown 1005:1005 /home/media/.config/Lidarr/nzbdrone.db* &&
+rm -r /home/media/.config/Lidarr/lidarr.db* &&
+unzip -o /mnt/backup/lidarr/lidarr_backup_base_settings.zip 'lidarr.db*' -d /home/media/.config/Lidarr &&
+chown 1005:1005 /home/media/.config/Lidarr/lidarr.db* &&
 sudo systemctl restart lidarr.service
 ```
 
@@ -212,8 +222,8 @@ sleep 5 &&
 rm -r /home/media/.config/Lidarr/nzbdrone.db* &&
 newest=$(ls -t /home/media/.config/Lidarr/Backups/scheduled/*.zip | head -1) &&
 echo $newest &&
-unzip -o "$newest" 'nzbdrone.db*' -d /home/media/.config/Lidarr &&
-chown 1005:1005 /home/media/.config/Lidarr/nzbdrone.db* &&
+unzip -o "$newest" 'lidarr.db*' -d /home/media/.config/Lidarr &&
+chown 1005:1005 /home/media/.config/Lidarr/lidarr.db* &&
 sudo systemctl restart lidarr.service
 ```
 
