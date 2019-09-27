@@ -225,20 +225,8 @@ echo $newest &&
 unzip -o "$newest" 'lidarr.db*' -d /home/media/.config/Lidarr &&
 chown 1005:1005 /home/media/.config/Lidarr/lidarr.db* &&
 sudo systemctl restart lidarr.service
-```
+``
 
-### 4.00 Add Content or Existing media
-Browse to http://192.168.50.116:7878 and login to Lidarr. Click the `Add Movies Tab` and type in the name of the movie you want. In this example we search for 'Shawshank'. Now most important are the following settings:
-
-![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/add_movie.png)
-
-| Add Movies | Value | Notes
-| :---  | :---: | :---
-| Path | `/mnt/video/movies/` | *The most important setting*
-| Monitor |`Yes`
-| Min Availability | Physical/Web
-| Profile | HD-1080p | *Change to Ultra-HD if you have a 4K TV*
-
-And click `Add +` or `Search`. 
+---`
 
 ## 00.00 Patches & Fixes
