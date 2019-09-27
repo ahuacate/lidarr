@@ -31,10 +31,10 @@ Browse to http://192.168.50.117:8686/ and login to Lidarr. Click the `Settings T
 
 ### 2.02 Configure Profiles
 Edit Delay Profiles. Add 300 minutes to the torrent delay.
-![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/quality.png)
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/profiles.png)
 
 ### 2.03 Configure Indexers
-This is where you configure Lidarr to use Usenet a your primary search indexer and Torrents as secondary. For torrents Lidarr uses Jackett which must be installed as shown [HERE](https://github.com/ahuacate/jackett).
+This is where you configure Lidarr to use Usenet as your primary search indexer and Torrents (Jackett) as the secondary indexer. For torrents Lidarr uses Jackett which must be installed as shown [HERE](https://github.com/ahuacate/jackett).
 
 **A) Add Jackett as a Indexer**
 
@@ -43,18 +43,15 @@ Create a new torrent indexer using the `Torznab Jackett Preset` template and fil
 | Add Torznab | Value
 | :---  | :---:
 | Name | `Jackett`
-| Enable RSS Sync | `No`
-| Enable Search | `Yes`
-| URL | `http://192.168.30.113:9117/torznab/all/api`
-| Multi Languages | leave blank
+| Enable RSS | `☐`
+| Enable Automatic Search | `☑`
+| Enable Interactive Search | `☑`
+| URL | `http://192.168.30.113:9117`
+| API Path | `/torznab/all/api`
 | API Key | `s9tcqkddvjpkmis824pp6ucgpwcd2xnc`
-| Categories | `2000,2010,2020,2030,2035,2040,2045,2050,2060`
-| Anime Categories | leave blank
+| Categories | `3000,3010,3020,3030,3040`
+| Early Download Limit| leave blank
 | Additional Parameters | leave blank
-| Remove year from search string | No
-| Search by Title | `Yes`
-| Minimum Seeders | `1`
-| Required Flags | leave blank
 
 And click `Save`. The finished Jackett configuration looks like:
 
