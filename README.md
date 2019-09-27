@@ -225,8 +225,9 @@ echo $newest &&
 unzip -o "$newest" 'lidarr.db*' -d /home/media/.config/Lidarr &&
 chown 1005:1005 /home/media/.config/Lidarr/lidarr.db* &&
 sudo systemctl restart lidarr.service
-``
+```
 
----`
+---
 
 ## 00.00 Patches & Fixes
+Nothing yet.
