@@ -63,7 +63,7 @@ Add all your Usenet indexers providers with the `Newsnab` presets (or custom if 
 
 Finally edit the `Options` Retention to `1500` days.
 
-![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/indexers.png)
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/indexer.png)
 
 ### 2.04 Configure Download Clients
 **A)  Deluge Download Client**
@@ -78,11 +78,11 @@ First create a new download client using the `Torrent > Deluge` template and fil
 | Port | `8112`
 | URL Base| leave blank
 | Password| `insert your deluge password` | This is your Deluge login password.
-| Category | `lidarr-movies`
-| Recent Priority | First
+| Category | `lidarr-music`
+| Recent Priority | Last
 | Older Priority | Last
-| Add Paused | No
-| Use SSL | No
+| Add Paused | `☐`
+| Use SSL | `☐`
 
 And click `Test` to check it works. If successful, click `Save`.
 
@@ -101,11 +101,11 @@ First create a new download client using the `Usenet > NZBGet` template and fill
 | URL Base| leave blank
 | Username | `client`
 | Password| `insert your client password` | This is your NZBGet client password.
-| Category | `lidarr-movies`
+| Category | `lidarr-music`
 | Recent Priority | Normal
 | Older Priority | Normal
-| Add Paused | No
-| Use SSL | No
+| Add Paused | `☐`
+| Use SSL | `☐`
 
 And click `Test` to check it works. If successful, click `Save`.
 
@@ -113,26 +113,23 @@ And click `Test` to check it works. If successful, click `Save`.
 
 Other `download tab` settings must be set as follows:
 
-![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/download_client.png)
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/download.png)
 
-### 2.05 Configure Lists
-If you dont have a IMDb account create one.
+### 2.05 Configure Import Lists
+If you want you can add Spotify or Last.fm to import your playlists. This example uses a personal Spotify playlist(s).
 
-Then go to your watchlist on IMDb's website. Press the `Edit` button for your list. On this page, you can add, remove, or re-order the watchlist. Now note URL adress because we need to copy the part that has "ur########". That's your IMDb ID so note it down. Then you can go back to Lidarr > `Settings Tab` > `Lists Tab` and click the `+` to add a `Lidarr Lists -- Presets -- UMDb List` and complete as follows:
-
-| Add - Lidarr Lists | Value | Notes
+| Sportify Playlists | Value | Notes
 | :---  | :---: | :---
-| Name | `IMDb Listname` | *Best to use a IMDb account username so you can add multiple IMDb lists to Lidarr (i.e IMDb Adolf, IMDb Eva or IMDb Kids)*
-| Enable Automatic Sync | `Yes`
-| Add Movies Monitored | `Yes`
-| Minimum Availability | `Physical/Web`
-| Quality Profile | `HD-1080p` | *Change to Ultra-HD if you have a 4K TV*
-| Folder | /mnt/videos/movies/
-| Tags | leave blank
-| Lidarr API URL | `https://api.lidarr.video/v2`
-| Path to list |`/imdb/list?listId=urXXXXXXXX` | *Replace XXXXXXXX with your IMDb user LISTID*
+| Name | `SpotifyPlaylist` | *Best to use a Spotify account username so you can add multiple Spotify playlists to Lidarr (i.e Spotify Adolf, Spotify Eva or Spotify Kids)*
+| Enable Automatic Add | `☑`
+| Monitor | `Specific Album`
+| Root Folder | `/mnt/music`
+| Quality Profile | `Lossless`
+| Lidarr Tags | leave blank
+| Playlists | Select playlists to import from Spotify
+| Authenticate with Spotify | Click `Authenticate with Spotify`
 
-![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/list.png)
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/spotify.png)
 
 Create a new connection using the `Emby (Media Browser)` template and fill out the details as shown below.
 
