@@ -23,32 +23,8 @@ Tasks to be performed are:
 - [ ] 00.00 Patches & Fixes
 
 
-## 1.00 Easy Lidarr Configuration
-You have two choices to configure Lidarr - the scripted Easy Method or manually enter all the settings yourself. If you choose the manual route proceed to Step 2 [HERE](https://github.com/ahuacate/lidarr/blob/master/README.md#200-manually-configure-lidarr-settings).
-
-The scripted Easy Method uses our pre-built configuration files which includes everything except three key settings:
-
-*  Adding your NZB Usenet Indexer provider accounts which can be done by performing this step [2.03 (B) Configure Indexers](https://github.com/ahuacate/lidarr/blob/master/README.md#203-configure-indexers)
-*  Updating Deluge access login username & password if you are not using the default credentials (i.e pwd=deluge) [2.04 (A) Configure Download Client](https://github.com/ahuacate/lidarr/blob/master/README.md#204-configure-download-clients)
-*  Updating Lidarr to use a secure login username & password which can be done by performing this step [2.06 Configure General](https://github.com/ahuacate/lidarr/blob/master/README.md#206-configure-general); *and,*
-
-Begin with the Proxmox web interface and go to `typhoon-01` > `115 (Lidarr)` > `>_ Shell` and type the following:
-```
-sudo systemctl stop lidarr.service &&
-sleep 5 &&
-rm -r /home/media/.config/Lidarr/nzbdrone.db &&
-wget https://raw.githubusercontent.com/ahuacate/lidarr/master/backup/nzbdrone.db -O /home/media/.config/Lidarr/nzbdrone.db &&
-wget https://raw.githubusercontent.com/ahuacate/lidarr/master/backup/config.xml -O /home/media/.config/Lidarr/config.xml
-chown 1005:1005 /home/media/.config/Lidarr/nzbdrone.db &&
-chown 1005:1005 /home/media/.config/Lidarr/config.xml &&
-sudo systemctl restart lidarr.service
-```
-
-Thats it. Now go and complete Steps 2.03 (B), 2.04 (A) and 2.06.
-
-
-## 2.00 Manually Configure Lidarr Settings
-Browse to http://192.168.50.116:7878 and login to Lidarr. Click the `Settings Tab` and click `Advanced Settings` to set `Shown` state. Configure all your tabs as follows.
+## 1.00 Manually Configure Lidarr Settings
+Browse to http://192.168.50.117:8686/ and login to Lidarr. Click the `Settings Tab` and set the state to show Advanced Settings. Configure all your tabs as follows.
 
 ### 2.01 Configure Media Management
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/media_management.png)
@@ -142,7 +118,28 @@ Other `download tab` settings must be set as follows:
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/download_client.png)
 
-### 2.05 Configure Connect
+### 2.05 Configure Lists
+If you dont have a IMDb account create one.
+
+Then go to your watchlist on IMDb's website. Press the `Edit` button for your list. On this page, you can add, remove, or re-order the watchlist. Now note URL adress because we need to copy the part that has "ur########". That's your IMDb ID so note it down. Then you can go back to Lidarr > `Settings Tab` > `Lists Tab` and click the `+` to add a `Lidarr Lists -- Presets -- UMDb List` and complete as follows:
+
+| Add - Lidarr Lists | Value | Notes
+| :---  | :---: | :---
+| Name | `IMDb Listname` | *Best to use a IMDb account username so you can add multiple IMDb lists to Lidarr (i.e IMDb Adolf, IMDb Eva or IMDb Kids)*
+| Enable Automatic Sync | `Yes`
+| Add Movies Monitored | `Yes`
+| Minimum Availability | `Physical/Web`
+| Quality Profile | `HD-1080p` | *Change to Ultra-HD if you have a 4K TV*
+| Folder | /mnt/videos/movies/
+| Tags | leave blank
+| Lidarr API URL | `https://api.lidarr.video/v2`
+| Path to list |`/imdb/list?listId=urXXXXXXXX` | *Replace XXXXXXXX with your IMDb user LISTID*
+
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/list.png)
+
+Create a new connection using the `Emby (Media Browser)` template and fill out the details as shown below.
+
+### 2.06 Configure Connect
 Create a new connection using the `Emby (Media Browser)` template and fill out the details as shown below.
 
 | Add - Emby (Media Browser) | Value | Notes
@@ -155,7 +152,7 @@ Create a new connection using the `Emby (Media Browser)` template and fill out t
 | Filter Movie Tags | leave blank
 | Host | `192.168.50.111` 
 | Port | `8096`
-| API Key | Insert your Jellyfin API key | *Note, create one in Jellyfin specially for Lidarr*
+| API Key | Insert your Jellyfin API key | *Note, create one in Jellyfin for Lidarr*
 | Send Notifications| `Yes`
 | Update Library | `Yes`
 
@@ -163,7 +160,7 @@ And click `Test` to check it works. If successful, click `Save`.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/jellyfin.png)
 
-### 2.06 Configure General
+### 2.07 Configure General
 Here are required edits: 1) URL Base; and, 2) setting the security section to enable username and login.
 
 | Start-Up | Value | Notes
@@ -183,23 +180,26 @@ And click `Save`.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/general.png)
 
-### 2.07 Configure UI
+### 2.08 Configure UI
+
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/ui.png)
 
 
 ## 3.00 Create & Restore Lidarr Backups
 Lidarr has a built in backup service. Lidarr will execute a backup every 7 days creating a zip file located in `/home/media/.config/Lidarr/Backups/scheduled`.
 
-But it's good idea to make a raw backup of your working base settings configuration, including all settings, before adding any movie media. This backup file must be stored outside of the Lidarr CT container for safe keeping. Then in the event of needing to recreate a Lidarr CT you can use this backup file to quickly restore all your Lidarr settings. This backup file must be named `lidarr_backup_base_settings.zip` and be located on your NAS in folder `/mnt/backup/lidarr` for below scripts to work.
+But it's good idea to make a clean backup of your working Lidarr settings, including all settings such as passwords etc, before adding any movie media. The clean backup file MUST be stored outside of the Proxmox Lidarr LXC container for safe keeping. Then in the event of you needing to recreate your Lidarr LXC you can use this backup file to quickly restore all your Lidarr settings.
+
+This backup file must be named `lidarr_backup_base_settings.zip` and be located on your NAS in folder `/mnt/backup/lidarr` for the following scripts to work.
 
 ### 3.01 Create a Base Settings Backup
-After you have completed Steps 1.00 or Steps 2.00 its time to create **new** private base settings backup. This file will be stored on your NAS for future rebuilds when and if required.
+Perform after you have completed Steps 1.00 or Steps 2.00. This file must be stored on your NAS for future rebuilds
 
 Browse to http://192.168.50.116:7878 and login to Lidarr. Click the `Systems Tab` > `Logs Tab` > `Table/Files/Updates Tabs` and click `Clear Logs` on all.
 
-Then click `System Tab` > `Backup Tab` and click `Backup` to create a new backup file which will be shown with a name like `lidarr_backup_2019.09.24_05.39.55.zip`. Now right click on this newly created file (at the top of list) and save to your NAS share `/proxmox/backup/lidarr` (locally mounted as /mnt/backup/lidarr). Rename your backup file `lidarr_backup_2019.09.24_05.39.55.zip` to `lidarr_backup_base_settings.zip`.
+Then click `System Tab` > `Backup Tab` and click `Backup` to create a new backup file which will be shown with a name like `lidarr_backup_2019.09.24_05.39.55.zip`. Now right click on this newly created file (at the top of list) and save to your NAS share `/proxmox/backup/lidarr` (locally mounted as /mnt/backup/lidarr). Rename your backup file from `lidarr_backup_2019.09.24_05.39.55.zip` to `lidarr_backup_base_settings.zip`.
 
-### 3.03 Restore to Lidarr Base Settings
+### 3.02 Restore to Lidarr Base Settings
 With the Proxmox web interface go to `typhoon-01` > `116 (lidarr)` > `>_ Shell` and type the following:
 ```
 sudo systemctl stop lidarr.service &&
@@ -222,5 +222,19 @@ unzip -o "$newest" 'nzbdrone.db*' -d /home/media/.config/Lidarr &&
 chown 1005:1005 /home/media/.config/Lidarr/nzbdrone.db* &&
 sudo systemctl restart lidarr.service
 ```
+
+### 4.00 Add Content or Existing media
+Browse to http://192.168.50.116:7878 and login to Lidarr. Click the `Add Movies Tab` and type in the name of the movie you want. In this example we search for 'Shawshank'. Now most important are the following settings:
+
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/add_movie.png)
+
+| Add Movies | Value | Notes
+| :---  | :---: | :---
+| Path | `/mnt/video/movies/` | *The most important setting*
+| Monitor |`Yes`
+| Min Availability | Physical/Web
+| Profile | HD-1080p | *Change to Ultra-HD if you have a 4K TV*
+
+And click `Add +` or `Search`. 
 
 ## 00.00 Patches & Fixes
