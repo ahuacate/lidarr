@@ -221,7 +221,8 @@ If you want to restore to your last backup (this backup is a maximum of 7 days o
 ```
 sudo systemctl stop lidarr.service &&
 sleep 5 &&
-rm -r /home/media/.config/Lidarr/nzbdrone.db* &&
+rm -r /home/media/.config/Lidarr/lidarr.db* &&
+rm -r /home/media/.config/Lidarr/config.xml &&
 newest=$(ls -t /home/media/.config/Lidarr/Backups/scheduled/*.zip | head -1) &&
 echo $newest &&
 unzip -o "$newest" 'lidarr.db*' -d /home/media/.config/Lidarr &&
