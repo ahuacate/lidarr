@@ -211,8 +211,8 @@ sleep 5 &&
 rm -r /home/media/.config/Lidarr/lidarr.db* &&
 rm -r /home/media/.config/Lidarr/config.xml &&
 unzip -o /mnt/backup/lidarr/lidarr_backup_base_settings.zip 'lidarr.db*' 'config.xml' -d /home/media/.config/Lidarr &&
-chown 1105:100 /home/media/.config/Lidarr/lidarr.db* &&
-chown 1105:100 /home/media/.config/Lidarr/config.xml &&
+chown 1605:65605 /home/media/.config/Lidarr/lidarr.db* &&
+chown 1605:65605 /home/media/.config/Lidarr/config.xml &&
 sudo systemctl restart lidarr.service
 ```
 
@@ -225,7 +225,7 @@ rm -r /home/media/.config/Lidarr/nzbdrone.db* &&
 newest=$(ls -t /home/media/.config/Lidarr/Backups/scheduled/*.zip | head -1) &&
 echo $newest &&
 unzip -o "$newest" 'lidarr.db*' -d /home/media/.config/Lidarr &&
-chown 1105:100 /home/media/.config/Lidarr/lidarr.db* &&
+chown 1605:65605 /home/media/.config/Lidarr/lidarr.db* &&
 sudo systemctl restart lidarr.service
 ```
 
