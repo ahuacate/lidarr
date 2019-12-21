@@ -46,7 +46,7 @@ Create a new torrent indexer using the `Torznab Jackett Preset` template and fil
 | Enable RSS | `☐`
 | Enable Automatic Search | `☑`
 | Enable Interactive Search | `☑`
-| URL | `http://192.168.30.113:9117`
+| URL | `http://192.168.50.120:9117`
 | API Path | `/torznab/all/api`
 | API Key | `s9tcqkddvjpkmis824pp6ucgpwcd2xnc`
 | Categories | `3000,3010,3020,3030,3040`
