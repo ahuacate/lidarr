@@ -17,10 +17,22 @@ Other Prerequisites are:
 - [x] Lidarr LXC with Lidarr SW installed as per [Lidarr LXC - Ubuntu 18.04](https://github.com/ahuacate/proxmox-lxc-media/blob/master/README.md#1000-lidarr-lxc---ubuntu-1804)
 
 Tasks to be performed are:
-- [ ] 1.00 Easy Lidarr Configuration
-- [ ] 2.00 Manually Configure Lidarr Settings
-- [ ] 3.00 Create & Restore Lidarr Backups
-- [ ] 00.00 Patches & Fixes
+- [1.00 Manually Configure Lidarr Settings](#100-manually-configure-lidarr-settings)
+	- [2.01 Configure Media Management](#201-configure-media-management)
+	- [2.02 Configure Profiles](#202-configure-profiles)
+	- [2.03 Configure Indexers](#203-configure-indexers)
+	- [2.04 Configure Download Clients](#204-configure-download-clients)
+	- [2.05 Configure Import Lists](#205-configure-import-lists)
+	- [2.06 Configure Connect](#206-configure-connect)
+	- [2.07 Configure General](#207-configure-general)
+	- [2.08 Configure Metadata](#208-configure-metadata)
+	- [2.09 Configure General](#209-configure-general)
+	- [2.09 Configure UI](#209-configure-ui)
+- [3.00 Create & Restore Lidarr Backups](#300-create--restore-lidarr-backups)
+	- [3.01 Create a Base Settings Backup](#301-create-a-base-settings-backup)
+	- [3.02 Restore to Lidarr Base Settings](#302-restore-to-lidarr-base-settings)
+	- [3.03 Restore the lastest Lidarr backup](#303-restore-the-lastest-lidarr-backup)
+- [00.00 Patches & Fixes](#0000-patches--fixes)
 
 
 ## 1.00 Manually Configure Lidarr Settings
