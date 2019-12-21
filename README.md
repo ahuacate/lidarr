@@ -223,9 +223,9 @@ sudo systemctl stop lidarr.service &&
 sleep 5 &&
 rm -r /home/media/.config/Lidarr/lidarr.db* &&
 rm -r /home/media/.config/Lidarr/config.xml &&
-su -c 'newest=$(ls -t /home/media/.config/Lidarr/Backups/scheduled/*.zip | head -1)' media &&
-su -c 'echo $newest' media &&
-su -c 'unzip -o "$newest" 'lidarr.db*' -d /home/media/.config/Lidarr' media &&
+newest=$(ls -t /home/media/.config/Lidarr/Backups/scheduled/*.zip | head -1) &&
+echo $newest &&
+unzip -o "$newest" 'lidarr.db*' -d /home/media/.config/Lidarr &&
 chown 1605:65605 /home/media/.config/Lidarr/lidarr.db* &&
 sudo systemctl restart lidarr.service
 ```
