@@ -41,15 +41,20 @@ Browse to http://192.168.50.117:8686/ and login to Lidarr. Click the `Settings T
 ### 2.01 Configure Media Management
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/management.png)
 
-### 2.02 Configure Profiles
-Edit Delay Profiles. Add 300 minutes to the torrent delay.
+### 2.02 Configure Profiles - Quality Profiles
+I prefer `lossless` audio but if not available `high quality lossy` is okay too. In the event `lossless` becomes available at a later stage I want Lidarr to perform a upgrade.
+
+Create a new profile (i.e `Ahuacate`) as conplete the fields as follows:
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/quality_profiles.png)
+
+### 2.03 Configure Profiles - Delay Profiles
+Edit Delay Profiles. Add 1440 minutes to both usenet and torrent delay fields.
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/profiles.png)
 
-### 2.03 Configure Indexers
+### 2.04 Configure Indexers
 This is where you configure Lidarr to use Usenet as your primary search indexer and Torrents (Jackett) as the secondary indexer. For torrents Lidarr uses Jackett which must be installed as shown [HERE](https://github.com/ahuacate/jackett).
 
-**A) Add Jackett as a Indexer**
-
+### 2.04a  Add Jackett as a Indexer
 Create a new torrent indexer using the `Torznab Jackett Preset` template and fill out the details as shown below.
 
 | Add Torznab | Value
@@ -69,17 +74,35 @@ And click `Save`. The finished Jackett configuration looks like:
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/torznab.png)
 
-**B) Add Usenet Indexers**
+### 2.04b Add Headphones
+If you havent done so get a VIP account with [Headphones](https://headphones.codeshy.com/vip/).
 
+| Add Headphones VIP | Value
+| :---  | :---:
+| Name | `Headphones`
+| Enable RSS | `☑`
+| Enable Automatic Search | `☑`
+| Enable Interactive Search | `☑`
+| Categories | `3000,3010,3020,3030,3040`
+| Username | insert here
+| Password | insert here
+| Early Download Limit| leave blank
+
+And click 'Save'.
+
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/headphones.png)
+
+### 2.04c  Add Usenet Indexers
 Add all your Usenet indexers providers with the `Newsnab` presets (or custom if your provider is not listed).
 
-Finally edit the `Options` Retention to `1500` days.
+Finally edit the `Options` Retention to `2000` days.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/indexer.png)
 
-### 2.04 Configure Download Clients
-**A)  Deluge Download Client**
+### 2.05 Configure Download Clients
+Add the following download clients.
 
+### 2.05a  Deluge Download Client
 First create a new download client using the `Torrent > Deluge` template and fill out the details as shown below.
 
 | Add Deluge | Value | Notes
@@ -100,8 +123,7 @@ And click `Test` to check it works. If successful, click `Save`.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/deluge.png)
 
-**B)  NZBGet Download Client**
-
+### 2.05b  NZBGet Download Client
 First create a new download client using the `Usenet > NZBGet` template and fill out the details as shown below.
 
 | Add NZBGet | Value | Notes
@@ -127,7 +149,7 @@ Other `download tab` settings must be set as follows:
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/download.png)
 
-### 2.05 Configure Import Lists
+### 2.06 Configure Import Lists
 If you want you can add Spotify or Last.fm to import your playlists. This example uses a personal Spotify playlist(s).
 
 | Spotify Playlists | Value | Notes
@@ -143,7 +165,7 @@ If you want you can add Spotify or Last.fm to import your playlists. This exampl
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/spotify.png)
 
-### 2.06 Configure Connect
+### 2.07 Configure Connect
 Create a new connection using the `Emby (Media Browser)` template and fill out the details as shown below.
 
 | Add - Emby (Media Browser) | Value | Notes
@@ -162,19 +184,20 @@ Create a new connection using the `Emby (Media Browser)` template and fill out t
 | Port | `8096`
 | Use SSL | `☐`
 | API Key | Insert your Jellyfin API key |	*Note, create one in Jellyfin for Lidarr*
+| Send Notifications | `☐`
 | Update Library | `☑`
 
 And click `Test` to check it works. If successful, click `Save`.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/jellyfin.png)
 
-### 2.07 Configure General
+### 2.08 Configure General
 Here are required edits: 1) URL Base; and, 2) setting the security section to enable username and login.
 
 | Start-Up | Value | Notes
 | :---  | :---: | :---
 | Bind Address | `*`
-| Port Number | 7878
+| Port Number | 8686
 | URL Base | `/lidarr`
 | Enable SSL | No
 | Open Browser on start | Yes
@@ -188,15 +211,15 @@ And click `Save`.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/general.png)
 
-### 2.08 Configure Metadata
+### 2.09 Configure Metadata
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/metadata.png)
 
-### 2.09 Configure General
+### 2.10 Configure General
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/general.png)
 
-### 2.09 Configure UI
+### 2.11 Configure UI
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/ui.png)
 
