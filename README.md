@@ -72,7 +72,7 @@ To minimise my selection to a rationale volume of content I use `Studio` and `Co
 
 ### 2.04 Configure Profiles - Delay Profiles
 Edit Delay Profiles. Add 1440 minutes to both usenet and torrent delay fields.
-![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/profiles.png)
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/delay_profiles.png)
 
 ### 2.05 Configure Indexers
 This is where you configure Lidarr to use Usenet as your primary search indexer and Torrents (Jackett) as the secondary indexer. For torrents Lidarr uses Jackett which must be installed as shown [HERE](https://github.com/ahuacate/jackett).
