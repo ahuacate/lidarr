@@ -19,15 +19,22 @@ Other Prerequisites are:
 Tasks to be performed are:
 - [1.00 Manually Configure Lidarr Settings](#100-manually-configure-lidarr-settings)
 	- [2.01 Configure Media Management](#201-configure-media-management)
-	- [2.02 Configure Profiles](#202-configure-profiles)
-	- [2.03 Configure Indexers](#203-configure-indexers)
-	- [2.04 Configure Download Clients](#204-configure-download-clients)
-	- [2.05 Configure Import Lists](#205-configure-import-lists)
-	- [2.06 Configure Connect](#206-configure-connect)
-	- [2.07 Configure General](#207-configure-general)
-	- [2.08 Configure Metadata](#208-configure-metadata)
-	- [2.09 Configure General](#209-configure-general)
-	- [2.09 Configure UI](#209-configure-ui)
+	- [2.02 Configure Profiles - Quality Profiles](#202-configure-profiles---quality-profiles)
+	- [2.03 Configure Profiles - Metadata Profiles](#203-configure-profiles---metadata-profiles)
+	- [2.04 Configure Profiles - Delay Profiles](#204-configure-profiles---delay-profiles)
+	- [2.05 Configure Indexers](#205-configure-indexers)
+	- [2.05a  Add Jackett as a Indexer](#205a--add-jackett-as-a-indexer)
+	- [2.05b Add Headphones](#205b-add-headphones)
+	- [2.05c  Add Usenet Indexers](#205c--add-usenet-indexers)
+	- [2.06 Configure Download Clients](#206-configure-download-clients)
+	- [2.06a  Deluge Download Client](#206a--deluge-download-client)
+	- [2.06b  NZBGet Download Client](#206b--nzbget-download-client)
+	- [2.07 Configure Import Lists](#207-configure-import-lists)
+	- [2.07 Configure Connect](#207-configure-connect)
+	- [2.08 Configure General](#208-configure-general)
+	- [2.09 Configure Metadata](#209-configure-metadata)
+	- [2.10 Configure General](#210-configure-general)
+	- [2.11 Configure UI](#211-configure-ui)
 - [3.00 Create & Restore Lidarr Backups](#300-create--restore-lidarr-backups)
 	- [3.01 Create a Base Settings Backup](#301-create-a-base-settings-backup)
 	- [3.02 Restore to Lidarr Base Settings](#302-restore-to-lidarr-base-settings)
@@ -63,14 +70,14 @@ Create a new profile (i.e `Ahuacate`) as conplete the fields as follows:
 To minimise my selection to a rationale volume of content I use `Studio` and `Compilation` in my settings.
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/metadata_profiles.png)
 
-### 2.03 Configure Profiles - Delay Profiles
+### 2.04 Configure Profiles - Delay Profiles
 Edit Delay Profiles. Add 1440 minutes to both usenet and torrent delay fields.
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/profiles.png)
 
-### 2.04 Configure Indexers
+### 2.05 Configure Indexers
 This is where you configure Lidarr to use Usenet as your primary search indexer and Torrents (Jackett) as the secondary indexer. For torrents Lidarr uses Jackett which must be installed as shown [HERE](https://github.com/ahuacate/jackett).
 
-### 2.04a  Add Jackett as a Indexer
+### 2.05a  Add Jackett as a Indexer
 Create a new torrent indexer using the `Torznab Jackett Preset` template and fill out the details as shown below.
 
 | Add Torznab | Value
@@ -90,7 +97,7 @@ And click `Save`. The finished Jackett configuration looks like:
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/torznab.png)
 
-### 2.04b Add Headphones
+### 2.05b Add Headphones
 If you havent done so get a VIP account with [Headphones](https://headphones.codeshy.com/vip/).
 
 | Add Headphones VIP | Value
@@ -108,17 +115,17 @@ And click 'Save'.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/headphones.png)
 
-### 2.04c  Add Usenet Indexers
+### 2.05c  Add Usenet Indexers
 Add all your Usenet indexers providers with the `Newsnab` presets (or custom if your provider is not listed).
 
 Finally edit the `Options` Retention to `2000` days.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/indexer.png)
 
-### 2.05 Configure Download Clients
+### 2.06 Configure Download Clients
 Add the following download clients.
 
-### 2.05a  Deluge Download Client
+### 2.06a  Deluge Download Client
 First create a new download client using the `Torrent > Deluge` template and fill out the details as shown below.
 
 | Add Deluge | Value | Notes
@@ -139,7 +146,7 @@ And click `Test` to check it works. If successful, click `Save`.
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/deluge.png)
 
-### 2.05b  NZBGet Download Client
+### 2.06b  NZBGet Download Client
 First create a new download client using the `Usenet > NZBGet` template and fill out the details as shown below.
 
 | Add NZBGet | Value | Notes
@@ -165,7 +172,7 @@ Other `download tab` settings must be set as follows:
 
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/download.png)
 
-### 2.06 Configure Import Lists
+### 2.07 Configure Import Lists
 If you want you can add Spotify or Last.fm to import your playlists. This example uses a personal Spotify playlist(s).
 
 | Spotify Playlists | Value | Notes
