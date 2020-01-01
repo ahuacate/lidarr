@@ -39,6 +39,18 @@ Tasks to be performed are:
 Browse to http://192.168.50.117:8686/ and login to Lidarr. Click the `Settings Tab` and set the state to show Advanced Settings. Configure all your tabs as follows.
 
 ### 2.01 Configure Media Management
+Good practice is to include the media quality in filenames for all content (i.e music, TV series, movies). Here are my `Track Naming` formats. 
+
+| Media Management  | Value
+| :---  | :---
+| **Track Naming**
+| Rename Tracks | `☑`
+| Replace Illegal Characters| `☑`
+| Standard Track Format | `{Artist Name} - {Album Title} - {track:00} - {Track Title} - [{Quality Title} {MediaInfo AudioCodec} {MediaInfo AudioBitRate}]`
+| Multi Disc Track Format | `{Medium Format} {medium:00}/{Artist Name} - {Album Title} - {track:00} - {Track Title} - [{Quality Title} {MediaInfo AudioCodec} {MediaInfo AudioBitRate}]`
+| Artist Folder Format | `{Artist Name}`
+| Album Folder Format | `{Artist Name} - {Album Title} ({Release Year})`
+
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/management.png)
 
 ### 2.02 Configure Profiles - Quality Profiles
@@ -46,6 +58,10 @@ I prefer `lossless` audio but if not available `high quality lossy` is okay too.
 
 Create a new profile (i.e `Ahuacate`) as conplete the fields as follows:
 ![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/quality_profiles.png)
+
+### 2.03 Configure Profiles - Metadata Profiles
+To minimise my selection to a rationale volume of content I use `Studio` and `Compilation` in my settings.
+![alt text](https://raw.githubusercontent.com/ahuacate/lidarr/master/images/metadata_profiles.png)
 
 ### 2.03 Configure Profiles - Delay Profiles
 Edit Delay Profiles. Add 1440 minutes to both usenet and torrent delay fields.
